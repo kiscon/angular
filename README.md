@@ -1,27 +1,33 @@
-# NgWeb
+## ng-web
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
+## 说明
 
-## Development server
+### 创建项目
+- 使用angular-cli创建项目
+- 使用express-generator创建node服务
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### 使用
+- 配置package.json文件，启动angular项目，转接到proxy.conf.json文件，
+```javascript
+"scripts": {
+    "ng": "ng",
+    "start": "ng serve --proxy-config proxy.conf.json --open",
+    "build": "ng build --prod",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e"
+  },
+```
 
-## Code scaffolding
+- 配置proxy.conf.json文件，中转到node层，由node层请求数据，返回到页面
+```javascript
+{
+  "/api":{
+    "target":"http://localhost:4222"
+  }
+}
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```
 
-## Build
+- 找到\server\bin目录下没有后缀名的文件，使用node+文件名，开启node服务
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

@@ -1,19 +1,7 @@
 var express = require('express')
 var router = express.Router()
 var request = require('request')
-let config = require('../../config/config');
-
-/* GET home page. */
-router.get('/verifySign', function(req, res, next) {
-  let userid = req.param('userid') || 'xxx';
-  res.json({
-    status: 0,
-    data: {
-      msg: 'success',
-      userid: userid
-    }
-  })
-})
+var config = require('../../config/config')
 
 function Product(id, title, price, rating, desc, categories) {
   this.id = id;
@@ -49,10 +37,6 @@ var comments = [
   new Comment(3, 1, "2017-11-26 23:56:50", "王五", 3, "很好"),
   new Comment(4, 2, "2017-11-26 00:56:50", "赵六", 3, "很好"),
 ];
-//首页
-/*router.get('/', function (req, res) {
-  res.send("Hello Express");
-});*/
 
 
 router.get('/getProducts', function (req, res) {
@@ -104,14 +88,6 @@ router.get('/product/:id/comments', function (req, res) {
   res.json(results);
 });
 
-//查询商品详情
-// router.all('/', function (req, res, next) {
-//   res.json([
-//     {"id":1,"title":"第一个商品","price":1.99,"rating":1.5,"desc":"这是第一个商品","categories":["电子产品","硬件设备"]},
-//     {"id":1,"title":"第二个商品","price":2.99,"rating":2.5,"desc":"这是第二个商品","categories":["图书"]},
-//     {"id":3,"title":"第三个商品","price":3.99,"rating":3.5,"desc":"这是第三个商品","categories":["农产品"]},
-//   ]);
-// });
 
 
 module.exports = router
