@@ -1,0 +1,22 @@
+<div class="product">
+  <p>
+    这里是商品详情组件1!
+  </p>
+  <p>
+    商品id是：{{productId}}
+  </p>
+  <p>
+    商品名称是：{{productName}}
+  </p>
+  <a [routerLink]="['./']">商品描述信息</a>
+  <a [routerLink]="['./seller', 999]">销售员信息</a>
+  <router-outlet></router-outlet>
+  <p>
+    商品信息动态获取：
+  </p>
+  <ul>
+    <li *ngFor="let product of products">
+      {{product.title}}
+    </li>
+  </ul>
+</div>

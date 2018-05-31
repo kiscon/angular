@@ -1,0 +1,24 @@
+<div>
+  <div>
+    <h1>测试依赖注入</h1>
+  </div>
+  <div>
+    <app-product1></app-product1>
+    <app-product2></app-product2>
+  </div>
+</div>
+<div>
+  <h1>测试父组件传值给子组件</h1>
+  <div>
+    <input type="text" placeholder="请输入股票代码" [(ngModel)]="stock">
+  </div>
+  <app-order [stockCode]="stock" [amount]="100"></app-order>
+</div>
+<a [routerLink]="['']">主页</a>
+<!--<a [routerLink]="['/product']" [queryParams]="{id: 1}">商品详情</a>-->
+<a [routerLink]="['/demo/product', 1]">商品详情</a>
+<input type="button" value="通过控制器实现页面跳转" (click)="toProductDetails()">
+<a [routerLink]="[{outlets: {aux: 'chat'}}]">开始聊天</a>
+<a [routerLink]="[{outlets: {aux: null}}]">结束聊天</a>
+<router-outlet></router-outlet>
+<router-outlet name="aux"></router-outlet>
